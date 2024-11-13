@@ -1,0 +1,18 @@
+[Unit]
+Description=Cloudflare DDNS
+After=network.target
+
+[Service]
+User=root
+Group=root
+ExecStart=/root/cloudflare-ddns/cloudflare-ddns.sh
+WorkingDirectory=/root/cloudflare-ddns
+Restart=always
+RestartSec=3
+Environment=CF_API_TOKEN="YOUR_API_TOKEN"
+Environment=CF_ZONE_ID="YOUR_ZONE_ID"
+Environment=CF_RECORD_ID="YOUR_RECORD_ID"
+Environment=RECORD_NAME="example.com"
+
+[Install]
+WantedBy=multi-user.target
